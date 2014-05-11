@@ -1,0 +1,23 @@
+%table
+	.thead
+		%tr
+			%th= "Name"
+			%th= "Date taken"
+			%th= "Tags"
+		%tr
+			%td= @photo.photo_name
+			%td= @photo.date
+			- @photo.tags.each do |t|
+				%td= t.name
+			%td= button_to "Edit", edit_photo_path(@photo), method: "get"
+			%td= button_to "Delete", @photo, method: "delete", data: { confirm: "Are you sure?" }
+		%tr
+			%td= image_tag @photo.image_url.to_s
+
+
+= form_for @new_tag, url: tags_path, method: :post do |t| #transfer this over to tags folder?? (need delete option for tags just on this page)
+	= t.label "Any tags?"
+	= t.text_field :name
+	= hidden_field_tag :photo_id, @photo.id
+	= t.submit "Click to tag"
+

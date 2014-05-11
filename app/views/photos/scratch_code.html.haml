@@ -1,0 +1,8 @@
+	//- p.tags.each do |x|
+			//%td= x.name
+
+photo.tags.each do |x|
+	%td= x.name
+
+- i = Tag.first
+	= f.tags << i

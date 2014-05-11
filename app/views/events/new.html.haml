@@ -1,0 +1,8 @@
+= form_for @new_event do |e|
+	= e.label :name
+	= e.text_field :name
+	%br
+	= e.label :date
+	= e.date_select :date
+	%br
+	= e.submit "Create"

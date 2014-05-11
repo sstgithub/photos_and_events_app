@@ -1,0 +1,22 @@
+%table
+	.thead
+	- @photos.each do |p|
+		%tr
+			%th= "Name"
+			%th= "Date taken"
+			%th= "Tags"
+		%tr
+			%td= p.photo_name
+			%td= p.date
+			- p.tags.each do |t|
+				%td= t.name
+			%td= button_to "Edit", edit_photo_path(p), method: "get"
+			%td= button_to "Delete", p, method: "delete", data: { confirm: "Are you sure?" }
+		%tr
+			%td= image_tag p.image_url(:thumb).to_s
+
+= link_to "Add Photo", new_photo_path
+
+
+	
+

@@ -1,0 +1,10 @@
+= form_for @photo, :html => {:multipart => true} do |p|
+	= p.label "Photo name"
+	= p.text_field :photo_name
+	%br
+	= p.label "Date"
+	= p.date_select :date
+	%br
+	= p.file_field :image
+	%br
+	= p.submit "Add a new photo"

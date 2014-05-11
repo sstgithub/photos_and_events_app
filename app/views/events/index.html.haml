@@ -1,0 +1,11 @@
+- @events.each do |e|
+	= e.name
+	= e.date
+	- e.photos.each do |p|
+		= p.photo_name
+	= link_to "Edit event ", edit_event_path(e)
+	= link_to "See photos", event_path(e)
+	= link_to "Delete event", e, method: :delete, data: { confirm: "Are you absolutely sure?" }
+	%br
+
+= link_to "Create a new event", new_event_path
