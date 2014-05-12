@@ -6,6 +6,8 @@ class Photo < ActiveRecord::Base
 
 	has_many :comments, as: :commentable
 
+	scope :past_week, -> { where('date > ?', 1.week.ago)}
+
 	# has_many :comments
 	# accepts_nested_attributes_for :comments
 end
