@@ -1,5 +1,5 @@
 = form_for @new_photo, :html => {:multipart => true} do |p|
-	= p.hidden_field :event_id
+	= p.text_field :event_id
 	= p.label "Photo name"
 	= p.text_field :photo_name
 	%br

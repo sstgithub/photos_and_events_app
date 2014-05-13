@@ -4,11 +4,15 @@
 			%th= "Name"
 			%th= "Date taken"
 			%th= "Tags"
+			%th= "Comments"
 		%tr
 			%td= @photo.photo_name
 			%td= @photo.date
 			- @photo.tags.each do |t|
 				%td= t.name
+			%br
+			- @photo.comments.each do |c|
+				%td= c.content
 			%td= button_to "Edit", edit_photo_path(@photo), method: "get"
 			%td= button_to "Delete", @photo, method: "delete", data: { confirm: "Are you sure?" }
 		%tr
@@ -20,4 +24,13 @@
 	= t.text_field :name
 	= hidden_field_tag :photo_id, @photo.id
 	= t.submit "Click to tag"
+
+%br
+
+= form_for @new_comment, method: :post do |c|
+	= c.hidden_field :commentable_id, value: @new_comment.commentable_id
+	= c.hidden_field :commentable_type, value: @new_comment.commentable_type
+	= c.text_field :content
+
+	= c.submit "Leave a comment", class: "btn btn-info"
 

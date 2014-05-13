@@ -10,6 +10,8 @@
 			%td= p.date
 			- p.tags.each do |t|
 				%td= t.name
+			- p.comments.each do |c|
+				%td= c.content
 			%td= button_to "Edit", edit_photo_path(p), method: "get"
 			%td= button_to "Delete", p, method: "delete", data: { confirm: "Are you sure?" }
 		%tr

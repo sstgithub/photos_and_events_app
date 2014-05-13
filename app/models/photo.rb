@@ -5,9 +5,7 @@ class Photo < ActiveRecord::Base
 	mount_uploader :image, ImageUploader
 
 	has_many :comments, as: :commentable
+	accepts_nested_attributes_for :comments
 
 	scope :past_week, -> { where('date > ?', 1.week.ago)}
-
-	# has_many :comments
-	# accepts_nested_attributes_for :comments
 end

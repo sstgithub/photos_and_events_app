@@ -7,6 +7,7 @@ class PhotosController < ApplicationController
 	def show
 		@photo = Photo.find(params[:id])
 		@new_tag = @photo.tags.build
+		@new_comment = @photo.comments.build
 	end
 
 
@@ -27,6 +28,7 @@ class PhotosController < ApplicationController
 	def edit
 		@photo = Photo.find(params[:id]) #just finds it and shows it on webpage
 		@new_tag = @photo.tags.build
+		@new_comment = @photo.comments.build#(commentable_type: "Photo")
 	end
 
 	def update
@@ -54,8 +56,8 @@ class PhotosController < ApplicationController
 	private
 
 	def photo_params
-		params.require(:photo).permit!
-		# params.require(:photo).permit(:photo_name, :image, comments_attributes:[:content])
+		# params.require(:photo).permit!
+		params.require(:photo).permit(:photo_name, :date, :image, comments_attributes:[:content])
 		# params.permit(:photo, :name, comments_attributes:[:content])
 	end
 end
